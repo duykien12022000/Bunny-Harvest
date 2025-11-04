@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
-        AudioManager.Instance.PlayMusic("BGM", 1, true);
+        //AudioManager.Instance.PlayMusic("BGM", 1, true);
         //levelManager.Initialize();
         //gameController.Initialize();
         uiManager.Initialize(this);

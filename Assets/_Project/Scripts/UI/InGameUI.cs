@@ -1,5 +1,5 @@
 ﻿using DG.Tweening;
-using FastFood;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,8 +7,14 @@ using UnityEngine.UI;
 public class InGameUI : ScreenUI
 {
     [SerializeField] Joystick joystick;
+    [SerializeField] Button pickUpBtn;
     public Joystick Joystick => joystick;
     public override void Initialize(UIManager uiManager)
     {
+        pickUpBtn.onClick.AddListener(OnPickUp);
+    }
+    private void OnPickUp()
+    {
+        PlayerController.Instance.PickUp();
     }
 }
