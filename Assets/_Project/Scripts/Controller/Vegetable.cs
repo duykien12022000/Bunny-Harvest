@@ -47,7 +47,6 @@ public class Vegetable : ObjectInteract
     {
         if (isClaimed) return;
         isClaimed = true;
-        model.SetActive(false);
     }
     public override void CancelClaim()
     {

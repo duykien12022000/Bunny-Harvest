@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FastFood;
 public class AudioManager : Singleton<AudioManager>
 {
     public static int MusicSetting

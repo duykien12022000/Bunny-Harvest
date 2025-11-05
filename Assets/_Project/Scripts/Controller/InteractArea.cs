@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class InteractArea : MonoBehaviour
 {
-    public HashSet<ObjectInteract> objectInteracts = new HashSet<ObjectInteract>();
+    public List<Vegetable> vegetables = new List<Vegetable>();
     [SerializeField] LayerMask objInteractLayer;
     private void OnTriggerEnter(Collider other)
     {
         if (((1 << other.gameObject.layer) & objInteractLayer) != 0)
         {
-            objectInteracts.Add(other.GetComponent<ObjectInteract>());
+            vegetables.Add(other.GetComponent<Vegetable>());
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        objectInteracts.Remove(other.GetComponent<ObjectInteract>());
+        vegetables.Remove(other.GetComponent<Vegetable>());
     }
-    public void RemoveObjInteract(ObjectInteract obj)
+    public void RemoveObjInteract(Vegetable obj)
     {
-        objectInteracts.Remove(obj);
+        vegetables.Remove(obj);
     }
 }

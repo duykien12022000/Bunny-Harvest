@@ -1,4 +1,3 @@
-using FastFood;
 using System;
 using UnityEngine;
 public abstract class PopupUI : MonoBehaviour

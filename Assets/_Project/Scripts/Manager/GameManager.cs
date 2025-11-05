@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] UIManager uiManager;
     //[SerializeField] LevelManager levelManager;
-    //[SerializeField] GameController gameController;
+    [SerializeField] GameController gameController;
     public static bool NEW_LEVEL = false;
     public static GameState currentState { get; private set; }
     public static GameMode currentMode { get; private set; }
@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
     {
         //AudioManager.Instance.PlayMusic("BGM", 1, true);
         //levelManager.Initialize();
-        //gameController.Initialize();
+        gameController.Initialize();
         uiManager.Initialize(this);
     }
     public void ReloadScene()
