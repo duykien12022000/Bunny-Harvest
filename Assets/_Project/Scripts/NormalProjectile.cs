@@ -82,6 +82,10 @@ public class NormalProjectile : Projectile
             target.OnTakeDamage();
             Deactive();
         }
+        else if(other.CompareTag("Environment"))
+        {
+            Deactive();
+        }
         //IDamage id = other.GetComponent<IDamage>();
         //if (id != null && id.GetCharacterType != damageInfo.characterType)
         //{
@@ -109,5 +113,6 @@ public class NormalProjectile : Projectile
             display.SetActive(false);
         if (impact)
             impact.SetActive(true);
+        FactoryObject.Despawn("Projectile", transform, 0.1f);
     }
 }

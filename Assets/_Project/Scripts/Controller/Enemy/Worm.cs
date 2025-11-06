@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Worm : EnemyController
 {
-    private Vector3 _direction;
     public float rotationSpeed = 180;
     public Transform firePos;
+    public ParticleSystem warningVFX;
+
+    private Vector3 _direction;
     private bool isFiring;
     public override void Initialize()
     {
@@ -21,13 +23,16 @@ public class Worm : EnemyController
         {
             isFiring = true;
             var p = FactoryObject.Spawn<NormalProjectile>("Projectile", "NormalProjectile");
-            p.transform.parent = firePos;
-            p.transform.localPosition = Vector3.zero;
+            p.transform.localPosition = firePos.position;
             p.Initialize(target);
         }
         if(obj == "EndFire")
         {
             isFiring = false;
+        }
+        if(obj == "WarningVFX")
+        {
+            warningVFX.Play();
         }
     }
 

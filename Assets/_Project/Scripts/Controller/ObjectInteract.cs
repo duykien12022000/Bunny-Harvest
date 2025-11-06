@@ -8,14 +8,13 @@ public abstract class ObjectInteract : MonoBehaviour
     [SerializeField] protected GameObject model;
     public float Radius => radius;
     protected State currentState;
-    //protected PlayerController player;
-    //protected bool playerOnArea;
+    protected PlayerController player;
     protected bool isClaimed;
 
     public virtual void Initialize()
     {
         currentState = State.SMALL;
-        //player = PlayerController.Instance;
+        player = PlayerController.Instance;
         //playerOnArea = false;
         isClaimed = false;
     }
@@ -25,16 +24,6 @@ public abstract class ObjectInteract : MonoBehaviour
     }
     protected virtual void UpdateLogic()
     {
-        //var p1 = new Vector3(transform.position.x, 0, transform.position.z);
-        //var p2 = new Vector3(player.transform.position.x, 0, player.transform.position.z);
-        //if (Vector3.Distance(p1, p2) < radius)
-        //{
-        //    playerOnArea = true;
-        //}
-        //else
-        //{
-        //    playerOnArea = false;
-        //}
     }
     protected void SwitchSate(State newState)
     {

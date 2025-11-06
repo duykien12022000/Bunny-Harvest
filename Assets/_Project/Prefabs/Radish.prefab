@@ -420,3 +420,47 @@ MonoBehaviour:
   fullyScale:
     scaleValue: {x: 8, y: 8, z: 8}
     posValue: {x: 0, y: 0.25, z: 0}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0.07812828
+      outSlope: 0.07812828
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9925033
+      value: 0.09195032
+      inSlope: -5.4506245
+      outSlope: -5.4506245
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1428329
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -12.265415
+      outSlope: -12.265415
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 0.75
+  maxHeightY: 3

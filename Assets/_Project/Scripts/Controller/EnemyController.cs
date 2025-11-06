@@ -30,7 +30,6 @@ public abstract class EnemyController : MonoBehaviour
     public virtual void UpdateLogic()
     {
         isDetected = PlayerDetected();
-        Debug.Log("is detected: " + isDetected);
     }
     public bool PlayerDetected()
     {

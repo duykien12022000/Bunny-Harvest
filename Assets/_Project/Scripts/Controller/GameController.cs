@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameController : Singleton<GameController>
 {
@@ -18,11 +19,9 @@ public class GameController : Singleton<GameController>
         var rp = areaCtrl.selected;
         for (int i = 0; i < rp.Count; i++)
         {
-            SpawnVegetable(rp[i]);
+            SpawnRandom(rp[i]);
         }
-        HandleRespawn(SpawnEnemy);
         CurrentScore = 0;
-
         inGameUI = UIManager.Instance.GetScreen<InGameUI>();
 
         currentHeart = DataManager.MaxtHeart;
@@ -35,7 +34,7 @@ public class GameController : Singleton<GameController>
         vegetables.Remove(vegetableRemove);
         GameManager.Instance.Delay(3, () =>
         {
-            HandleRespawn(SpawnVegetable);
+            HandleRespawn(SpawnRandom);
         });
     }
     public void HandleRespawn(Action<Vector3Int> OnSpawn)
@@ -51,19 +50,23 @@ public class GameController : Singleton<GameController>
             }
         }
     }
-    private void SpawnVegetable(Vector3Int position)
+    private void SpawnRandom(Vector3Int position)
     {
-        var x = FactoryObject.Spawn<Vegetable>("Vegetable", "Radish");
-        x.Initialize();
-        x.transform.position = position;
-        vegetables.Add(x);
-    }
-    private void SpawnEnemy(Vector3Int position)
-    {
-        var x = FactoryObject.Spawn<Worm>("Enemy", "Worm");
-        x.Initialize();
-        x.transform.position = position;
-        worms.Add(x);
+        int random = Random.Range(0, 100);
+        if( random <= 80)
+        {
+            var x = FactoryObject.Spawn<Vegetable>("Vegetable", "Radish");
+            x.Initialize();
+            x.transform.position = position;
+            vegetables.Add(x);
+        }
+        else
+        {
+            var x = FactoryObject.Spawn<Worm>("Enemy", "Worm");
+            x.Initialize();
+            x.transform.position = position;
+            worms.Add(x);
+        }
     }
     public void UpdateScore(int score)
     {

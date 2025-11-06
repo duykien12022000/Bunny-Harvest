@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    [SerializeField] float moveSpeed;
+    [SerializeField] float moveSpeed, jumpForce;
     [SerializeField] AnimatorHandle animatorHandle;
     [SerializeField] InteractArea interactArea;
     private Joystick joystick;
@@ -12,6 +13,8 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Raycast Checking")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float footOffset, groundRayDistance;
+
+    bool isJumpinng;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,8 +22,15 @@ public class PlayerController : Singleton<PlayerController>
     }
     private void FixedUpdate()
     {
-        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
         if (animatorHandle.GetBool("IsInteracting")) return;
+        animatorHandle.SetBool("IsOnGround", IsOnGround() && rb.velocity.y <= 0.001f);
+        HandleMoving();
+        HandleJumping();
+        CameraController.Instance.FollowTo(transform.position);
+    }
+    private void HandleMoving()
+    {
+        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
         if (moveDirection.magnitude > 0.1f)
         {
             Vector3 targetPosition = rb.position + moveDirection.normalized * moveSpeed * Time.fixedDeltaTime;
@@ -28,19 +38,23 @@ public class PlayerController : Singleton<PlayerController>
             Quaternion targetRotation = Quaternion.LookRotation(-moveDirection);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 0.2f));
         }
-
-        //if (IsOnGround())
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        rb.AddForce(Vector3.up * 50f);
-        //        animatorHandle.SetBool("IsJumping", true);
-        //    }
-        //    animatorHandle.SetFloat("MoveAmount", moveDirection.magnitude, 1);
-        //}
         animatorHandle.SetFloat("MoveAmount", moveDirection.magnitude, 1);
-        CameraController.Instance.FollowTo(transform.position);
+        animatorHandle.SetFloat("VelocityY", rb.velocity.y);
     }
+    private void HandleJumping()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (IsOnGround())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                //animatorHandle.PlayAnimation("Jump", 0.1f, 0);
+            }
+        }
+    }
+
+
+
     public void PickUp()
     {
         if (interactArea.vegetables.Count == 0) return;
@@ -51,7 +65,6 @@ public class PlayerController : Singleton<PlayerController>
             var v = interactArea.vegetables[i];
             v.OnClaiming();
             interactArea.RemoveObjInteract(v);
-            GameController.Instance.DespawnVegetable(v);
             GameController.Instance.UpdateScore(1);
 
         }
