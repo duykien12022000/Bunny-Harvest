@@ -28,7 +28,7 @@ public class PlayerController : Singleton<PlayerController>
             Quaternion targetRotation = Quaternion.LookRotation(-moveDirection);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 0.2f));
         }
-        
+
         //if (IsOnGround())
         //{
         //    if (Input.GetKeyDown(KeyCode.Space))
@@ -38,6 +38,7 @@ public class PlayerController : Singleton<PlayerController>
         //    }
         //    animatorHandle.SetFloat("MoveAmount", moveDirection.magnitude, 1);
         //}
+        animatorHandle.SetFloat("MoveAmount", moveDirection.magnitude, 1);
         CameraController.Instance.FollowTo(transform.position);
     }
     public void PickUp()
@@ -75,5 +76,9 @@ public class PlayerController : Singleton<PlayerController>
         Color color = raycast ? Color.red : Color.green;
         Debug.DrawRay(position, Vector3.down * distance, color);
         return raycast;
+    }
+    public void OnTakeDamage()
+    {
+        GameController.Instance.UpdateHealth(-1);
     }
 }

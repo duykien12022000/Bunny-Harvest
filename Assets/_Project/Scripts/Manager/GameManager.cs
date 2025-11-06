@@ -21,8 +21,8 @@ public class GameManager : Singleton<GameManager>
     {
         //AudioManager.Instance.PlayMusic("BGM", 1, true);
         //levelManager.Initialize();
-        gameController.Initialize();
         uiManager.Initialize(this);
+        gameController.Initialize();
     }
     public void ReloadScene()
     {

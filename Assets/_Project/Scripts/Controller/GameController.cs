@@ -1,15 +1,16 @@
-using DG.Tweening;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
 {
     public static int CurrentScore = 0;
+    public int numberGenerate = 20;
+    private int currentHeart;
     private AreaController areaCtrl;
     private List<Vegetable> vegetables = new List<Vegetable>();
-    public int numberGenerate = 20;
+    private List<Worm> worms = new List<Worm>();
+    private InGameUI inGameUI;
     public void Initialize()
     {
         areaCtrl = AreaController.Instance;
@@ -17,21 +18,27 @@ public class GameController : Singleton<GameController>
         var rp = areaCtrl.selected;
         for (int i = 0; i < rp.Count; i++)
         {
-            var x = FactoryObject.Spawn<Vegetable>("Vegetable", "Radish");
-            x.Initialize();
-            x.transform.position = rp[i];
-            vegetables.Add(x);
+            SpawnVegetable(rp[i]);
         }
+        HandleRespawn(SpawnEnemy);
         CurrentScore = 0;
+
+        inGameUI = UIManager.Instance.GetScreen<InGameUI>();
+
+        currentHeart = DataManager.MaxtHeart;
+        UpdateHealth(currentHeart);
     }
     public void DespawnVegetable(Vegetable vegetableRemove)
     {
         areaCtrl.PushSe2Re(Vector3Int.CeilToInt(vegetableRemove.transform.position));
         FactoryObject.Despawn("Vegetable", vegetableRemove.transform);
         vegetables.Remove(vegetableRemove);
-        Invoke("HandleRespawn", 3);
+        GameManager.Instance.Delay(3, () =>
+        {
+            HandleRespawn(SpawnVegetable);
+        });
     }
-    public void HandleRespawn()
+    public void HandleRespawn(Action<Vector3Int> OnSpawn)
     {
         if (areaCtrl.selected.Count < numberGenerate)
         {
@@ -39,17 +46,33 @@ public class GameController : Singleton<GameController>
             var rp = areaCtrl.GetRandomPositionFrRemaining(missing);
             for (int i = 0; i < rp.Count; i++)
             {
-                var x = FactoryObject.Spawn<Vegetable>("Vegetable", "Radish");
-                x.Initialize();
-                x.transform.position = rp[i];
-                vegetables.Add(x);
+                OnSpawn?.Invoke(rp[i]);
                 areaCtrl.PushRe2Se(rp[i]);
             }
         }
     }
+    private void SpawnVegetable(Vector3Int position)
+    {
+        var x = FactoryObject.Spawn<Vegetable>("Vegetable", "Radish");
+        x.Initialize();
+        x.transform.position = position;
+        vegetables.Add(x);
+    }
+    private void SpawnEnemy(Vector3Int position)
+    {
+        var x = FactoryObject.Spawn<Worm>("Enemy", "Worm");
+        x.Initialize();
+        x.transform.position = position;
+        worms.Add(x);
+    }
     public void UpdateScore(int score)
     {
         CurrentScore += score;
-        UIManager.Instance.GetScreen<InGameUI>().UpdateCurrentScore(CurrentScore);  
+        inGameUI.UpdateCurrentScore(CurrentScore);
+    }
+    public void UpdateHealth(int amount)
+    {
+        currentHeart += amount;
+        inGameUI.UpdateCurrentHealth(amount);
     }
 }

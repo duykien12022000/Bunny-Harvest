@@ -1,15 +1,14 @@
 ﻿using DG.Tweening;
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
 
 public class InGameUI : ScreenUI
 {
     [SerializeField] Joystick joystick;
     [SerializeField] Button pickUpBtn;
-    [SerializeField] TextMeshProUGUI scoreTxt;
+    [SerializeField] TextMeshProUGUI scoreTxt, healthTxt;
     public Joystick Joystick => joystick;
     public override void Initialize(UIManager uiManager)
     {
@@ -32,4 +31,14 @@ public class InGameUI : ScreenUI
             });
         scoreTxt.text = $"{score.ToString()}x";
     }
+    public void UpdateCurrentHealth(int amount)
+    {
+        Color color = amount > 0 ? Color.green : Color.red;
+        healthTxt.transform.localScale = Vector3.one * 1.1f;
+        Sequence seq = DOTween.Sequence().SetLoops(2, LoopType.Yoyo);
+        seq.Join(healthTxt.DOColor(color, 0.2f).SetEase(Ease.OutQuad));
+        seq.Join(healthTxt.transform.DOScale(1f, 0.2f).SetEase(Ease.InOutQuad));
+        healthTxt.text = $"x{amount.ToString()}";
+    }
+
 }
