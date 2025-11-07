@@ -7,6 +7,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] float moveSpeed, jumpForce;
     [SerializeField] AnimatorHandle animatorHandle;
     [SerializeField] InteractArea interactArea;
+    [SerializeField] FootContact footContact;
     private Joystick joystick;
     private Rigidbody rb;
 
@@ -18,6 +19,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        footContact.Initialize(this);
         joystick = UIManager.Instance.GetScreen<InGameUI>().Joystick;
     }
     private void FixedUpdate()
@@ -25,12 +27,23 @@ public class PlayerController : Singleton<PlayerController>
         if (animatorHandle.GetBool("IsInteracting")) return;
         animatorHandle.SetBool("IsOnGround", IsOnGround() && rb.velocity.y <= 0.001f);
         HandleMoving();
-        HandleJumping();
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HandleJumping();
+        }
+#endif
         CameraController.Instance.FollowTo(transform.position);
     }
     private void HandleMoving()
     {
+
+#if UNITY_EDITOR
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+#else
+
         Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+#endif
         if (moveDirection.magnitude > 0.1f)
         {
             Vector3 targetPosition = rb.position + moveDirection.normalized * moveSpeed * Time.fixedDeltaTime;
@@ -41,20 +54,18 @@ public class PlayerController : Singleton<PlayerController>
         animatorHandle.SetFloat("MoveAmount", moveDirection.magnitude, 1);
         animatorHandle.SetFloat("VelocityY", rb.velocity.y);
     }
-    private void HandleJumping()
+    public void HandleJumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsOnGround())
         {
-            if (IsOnGround())
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                //animatorHandle.PlayAnimation("Jump", 0.1f, 0);
-            }
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
-
-
-
+    public void OnJumpingHigher()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        animatorHandle.PlayAnimation("JumpHigher", 0.1f, 0);
+    }
     public void PickUp()
     {
         if (interactArea.vegetables.Count == 0) return;

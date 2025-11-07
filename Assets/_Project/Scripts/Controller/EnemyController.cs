@@ -12,16 +12,15 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected float viewAngle = 90f;
 
     protected PlayerController target;
-
-
+    protected Collider m_collider;
+    protected bool isDead;
     public bool isDetected { protected set; get; }
-    private void Start()
-    {
-        Initialize();
-    }
     public virtual void Initialize()
     {
         target = PlayerController.Instance;
+        isDead = false;
+        m_collider = GetComponent<Collider>();
+        m_collider.enabled = true;
     }
     private void Update()
     {
@@ -29,6 +28,7 @@ public abstract class EnemyController : MonoBehaviour
     }
     public virtual void UpdateLogic()
     {
+        if(isDead) return;
         isDetected = PlayerDetected();
     }
     public bool PlayerDetected()
@@ -66,6 +66,21 @@ public abstract class EnemyController : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, target.transform.position);
+        }
+    }
+    protected void OnTakeDamage()
+    {
+        isDead = true;
+        m_collider.enabled = false;
+        animatorHandle.PlayAnimation("Dead", 0.1f, 0);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PlayerFoot"))
+        {
+            var fc = other.GetComponent<FootContact>();
+            fc.OnTrigger();
+            OnTakeDamage();
         }
     }
 }

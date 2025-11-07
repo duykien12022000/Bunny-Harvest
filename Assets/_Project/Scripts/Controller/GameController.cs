@@ -37,6 +37,16 @@ public class GameController : Singleton<GameController>
             HandleRespawn(SpawnRandom);
         });
     }
+    public void DespawnEnemy(Worm wormRemove)
+    {
+        areaCtrl.PushSe2Re(Vector3Int.CeilToInt(wormRemove.transform.position));
+        FactoryObject.Despawn("Enemy", wormRemove.transform);
+        worms.Remove(wormRemove);
+        GameManager.Instance.Delay(3, () =>
+        {
+            HandleRespawn(SpawnRandom);
+        });
+    }
     public void HandleRespawn(Action<Vector3Int> OnSpawn)
     {
         if (areaCtrl.selected.Count < numberGenerate)

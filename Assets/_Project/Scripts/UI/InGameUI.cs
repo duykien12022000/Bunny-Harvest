@@ -7,17 +7,22 @@ using Sequence = DG.Tweening.Sequence;
 public class InGameUI : ScreenUI
 {
     [SerializeField] Joystick joystick;
-    [SerializeField] Button pickUpBtn;
+    [SerializeField] Button pickUpBtn, jumpBtn;
     [SerializeField] TextMeshProUGUI scoreTxt, healthTxt;
     public Joystick Joystick => joystick;
     public override void Initialize(UIManager uiManager)
     {
         pickUpBtn.onClick.AddListener(OnPickUp);
+        jumpBtn.onClick.AddListener(OnJump);
         scoreTxt.text = "0x";
     }
     private void OnPickUp()
     {
         PlayerController.Instance.PickUp();
+    }
+    private void OnJump()
+    {
+        PlayerController.Instance.HandleJumping();
     }
     public void UpdateCurrentScore(int score)
     {

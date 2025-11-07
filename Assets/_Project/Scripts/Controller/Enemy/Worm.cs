@@ -14,25 +14,30 @@ public class Worm : EnemyController
     public override void Initialize()
     {
         base.Initialize();
-        animatorHandle.OnEventAnimation += OnFire;
+        animatorHandle.OnEventAnimation += SendEvent;
     }
 
-    private void OnFire(string obj)
+    private void SendEvent(string eventName)
     {
-        if (obj == "Fire")
+        if (eventName == "Fire")
         {
             isFiring = true;
             var p = FactoryObject.Spawn<NormalProjectile>("Projectile", "NormalProjectile");
             p.transform.localPosition = firePos.position;
             p.Initialize(target);
         }
-        if(obj == "EndFire")
+        if(eventName == "EndFire")
         {
             isFiring = false;
         }
-        if(obj == "WarningVFX")
+        if(eventName == "WarningVFX")
         {
             warningVFX.Play();
+        }
+        if (eventName == "OnDead")
+        {
+            GameController.Instance.DespawnEnemy(this);
+            Debug.Log("OH SHIT");
         }
     }
 
@@ -54,5 +59,4 @@ public class Worm : EnemyController
             animatorHandle.SetFloat("AttackAmount", 0);
         }
     }
-
 }

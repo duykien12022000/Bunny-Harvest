@@ -38,7 +38,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Death
+  m_Name: Dead
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -99,7 +99,7 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -113312297601469154}
-    m_Position: {x: 482.49512, y: -88.95462, z: 0}
+    m_Position: {x: 390, y: -40, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
