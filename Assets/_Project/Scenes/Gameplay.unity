@@ -374,10 +374,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -787,10 +783,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_A
       objectReference: {fileID: 0}
-    - target: {fileID: 8907016518479753647, guid: 906036134f36d1943a5302fe9a4427d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -923,10 +915,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1390,10 +1378,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_B
       objectReference: {fileID: 0}
-    - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1410,10 +1394,6 @@ PrefabInstance:
     - target: {fileID: 4555631082950470937, guid: fffbeb47f6dfdbf40b02252a4a273217, type: 3}
       propertyPath: m_Name
       value: floor_tile_small_broken_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555631082950470937, guid: fffbeb47f6dfdbf40b02252a4a273217, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051700501281009173, guid: fffbeb47f6dfdbf40b02252a4a273217, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1643,10 +1623,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1768,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: faffa2f128777824aabb32ffe9f2c964, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 20b53d6b8fb37ff49840bfcb14d85c78, type: 2}
+      objectReference: {fileID: 2100000, guid: 506353f4ff863204094331882d88d022, type: 2}
     - target: {fileID: 919132149155446097, guid: faffa2f128777824aabb32ffe9f2c964, type: 3}
       propertyPath: m_Name
       value: table_long
@@ -2003,10 +1979,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2127,10 +2099,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2186,7 +2154,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 327859103}
-  - component: {fileID: 327859102}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -2194,18 +2161,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!156049354 &327859102
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327859101}
-  m_Enabled: 1
-  m_CellSize: {x: 2, y: 2, z: 0}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 1
 --- !u!4 &327859103
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,10 +2685,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3385,10 +3336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3646,10 +3593,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_broken_A
       objectReference: {fileID: 0}
-    - target: {fileID: 3707509531588505910, guid: 508ea8e3ec988ed43922009a52470f9f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3666,10 +3609,6 @@ PrefabInstance:
     - target: {fileID: 684149608702263497, guid: 52f1a1337fef18a408b0276403566033, type: 3}
       propertyPath: m_Name
       value: floor_tile_small_weeds_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 684149608702263497, guid: 52f1a1337fef18a408b0276403566033, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4560280812182048263, guid: 52f1a1337fef18a408b0276403566033, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4018,10 +3957,6 @@ PrefabInstance:
     - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4806,10 +4741,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_B
       objectReference: {fileID: 0}
-    - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4993,10 +4924,6 @@ PrefabInstance:
     - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5701,10 +5628,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5953,10 +5876,6 @@ PrefabInstance:
     - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6993,10 +6912,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_weeds_A
       objectReference: {fileID: 0}
-    - target: {fileID: 684149608702263497, guid: 52f1a1337fef18a408b0276403566033, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4560280812182048263, guid: 52f1a1337fef18a408b0276403566033, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -7289,10 +7204,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_weeds_B
       objectReference: {fileID: 0}
-    - target: {fileID: 7140268430798456283, guid: 0bd6309b39e601c48a1023737b6a9395, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7555,10 +7466,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8257,10 +8164,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small
       objectReference: {fileID: 0}
-    - target: {fileID: 8834117098535997887, guid: b01ff35c4ba69ac4db1feff40e02f3eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8955,10 +8858,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_weeds_A
       objectReference: {fileID: 0}
-    - target: {fileID: 684149608702263497, guid: 52f1a1337fef18a408b0276403566033, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4560280812182048263, guid: 52f1a1337fef18a408b0276403566033, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -9107,10 +9006,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9167,10 +9062,6 @@ PrefabInstance:
     - target: {fileID: 5173623191162914475, guid: 9e413817d7a4440488260eb8d866d052, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_C
-      objectReference: {fileID: 0}
-    - target: {fileID: 5173623191162914475, guid: 9e413817d7a4440488260eb8d866d052, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7375201867901864303, guid: 9e413817d7a4440488260eb8d866d052, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9244,10 +9135,6 @@ PrefabInstance:
     - target: {fileID: 4555631082950470937, guid: fffbeb47f6dfdbf40b02252a4a273217, type: 3}
       propertyPath: m_Name
       value: floor_tile_small_broken_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555631082950470937, guid: fffbeb47f6dfdbf40b02252a4a273217, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051700501281009173, guid: fffbeb47f6dfdbf40b02252a4a273217, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10240,10 +10127,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10300,10 +10183,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10629,10 +10508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10877,10 +10752,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_weeds_B
       objectReference: {fileID: 0}
-    - target: {fileID: 7140268430798456283, guid: 0bd6309b39e601c48a1023737b6a9395, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11124,10 +10995,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11432,10 +11299,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11492,10 +11355,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12273,10 +12132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12774,10 +12629,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13069,10 +12920,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13134,10 +12981,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13569,10 +13412,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13872,10 +13711,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13937,10 +13772,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14091,10 +13922,6 @@ PrefabInstance:
     - target: {fileID: 8834117098535997887, guid: b01ff35c4ba69ac4db1feff40e02f3eb, type: 3}
       propertyPath: m_Name
       value: floor_tile_small
-      objectReference: {fileID: 0}
-    - target: {fileID: 8834117098535997887, guid: b01ff35c4ba69ac4db1feff40e02f3eb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14488,10 +14315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_broken_A
       objectReference: {fileID: 0}
-    - target: {fileID: 3707509531588505910, guid: 508ea8e3ec988ed43922009a52470f9f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14657,10 +14480,6 @@ PrefabInstance:
     - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_B
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933788572780117095, guid: a37fbd0f8fbdec74f9a48c531a45ef9d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15149,10 +14968,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_tile_small_weeds_B
       objectReference: {fileID: 0}
-    - target: {fileID: 7140268430798456283, guid: 0bd6309b39e601c48a1023737b6a9395, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15295,10 +15110,6 @@ PrefabInstance:
     - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_D
-      objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15804,10 +15615,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor_dirt_small_D
       objectReference: {fileID: 0}
-    - target: {fileID: 6068193172850156787, guid: 59627938287d873418afc61b81537989, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16063,10 +15870,6 @@ PrefabInstance:
     - target: {fileID: 8907016518479753647, guid: 906036134f36d1943a5302fe9a4427d9, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907016518479753647, guid: 906036134f36d1943a5302fe9a4427d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16405,10 +16208,6 @@ PrefabInstance:
     - target: {fileID: 8907016518479753647, guid: 906036134f36d1943a5302fe9a4427d9, type: 3}
       propertyPath: m_Name
       value: floor_dirt_small_A
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907016518479753647, guid: 906036134f36d1943a5302fe9a4427d9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
