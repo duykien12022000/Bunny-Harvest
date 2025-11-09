@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerController : Singleton<PlayerController>
 {
+    public Transform root;
+
     [SerializeField] float moveSpeed, jumpForce;
     [SerializeField] AnimatorHandle animatorHandle;
     [SerializeField] InteractArea interactArea;
     [SerializeField] FootContact footContact;
+    [SerializeField] ParticleSystem dustVFX;
     private Joystick joystick;
     private Rigidbody rb;
 
@@ -15,17 +17,35 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float footOffset, groundRayDistance;
 
+    [Header("Booster")]
+    [SerializeField] GameObject shieldObject;
+    private float cacheSpeed;
+
     bool isJumpinng;
-    private void Start()
+    public void Initialize()
     {
         rb = GetComponent<Rigidbody>();
+        interactArea.Initialize();
         footContact.Initialize(this);
         joystick = UIManager.Instance.GetScreen<InGameUI>().Joystick;
+        animatorHandle.OnEventAnimation += SendEvent;
+        shieldObject.SetActive(false);
+        cacheSpeed = moveSpeed;
     }
-    private void FixedUpdate()
+
+    private void SendEvent(string eventName)
+    {
+        if (eventName == "Collected")
+        {
+            animatorHandle.SetBool("IsInteracting", false);
+            OnCollectVegetable();
+        }
+    }
+    public void UpdatePhysic()
     {
         if (animatorHandle.GetBool("IsInteracting")) return;
         animatorHandle.SetBool("IsOnGround", IsOnGround() && rb.velocity.y <= 0.001f);
+        if (GameManager.currentState != GameState.PLAY) return;
         HandleMoving();
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
@@ -39,14 +59,14 @@ public class PlayerController : Singleton<PlayerController>
     {
 
 #if UNITY_EDITOR
-        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-#else
+        //Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+//#else
 
-        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
 #endif
+        Vector3 moveDirection = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
         if (moveDirection.magnitude > 0.1f)
         {
-            Vector3 targetPosition = rb.position + moveDirection.normalized * moveSpeed * Time.fixedDeltaTime;
+            Vector3 targetPosition = rb.position + moveDirection.normalized * cacheSpeed * Time.fixedDeltaTime;
             rb.MovePosition(targetPosition);
             Quaternion targetRotation = Quaternion.LookRotation(-moveDirection);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 0.2f));
@@ -56,6 +76,7 @@ public class PlayerController : Singleton<PlayerController>
     }
     public void HandleJumping()
     {
+        if (GameManager.currentState != GameState.PLAY) return;
         if (IsOnGround())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -68,19 +89,24 @@ public class PlayerController : Singleton<PlayerController>
     }
     public void PickUp()
     {
+        if (GameManager.currentState != GameState.PLAY) return;
         if (interactArea.vegetables.Count == 0) return;
         animatorHandle.PlayAnimation("PickUp", 0.1f, 0, true, 2);
-        GameManager.Instance.Delay(0.75f, () => { animatorHandle.SetBool("IsInteracting", false); });
+    }
+    public void OnCollectVegetable()
+    {
         for (int i = 0; i < interactArea.vegetables.Count; i++)
         {
             var v = interactArea.vegetables[i];
             v.OnClaiming();
             interactArea.RemoveObjInteract(v);
-            GameController.Instance.UpdateScore(1);
-
+            int score = 0;
+            if (v.State == State.MEDIUM) score = 1;
+            else if (v.State == State.FULLY) score = 2;
+            GameController.Instance.UpdateScore(score);
         }
     }
-    public void CancelPickUp()
+    private void CancelPickUp()
     {
         animatorHandle.SetBool("IsInteracting", false);
         foreach (var obj in interactArea.vegetables)
@@ -104,5 +130,58 @@ public class PlayerController : Singleton<PlayerController>
     public void OnTakeDamage()
     {
         GameController.Instance.UpdateHealth(-1);
+        if (GameController.Instance.OnLose())
+        {
+            animatorHandle.PlayAnimation("Dead", 0.1f, 0);
+            GameManager.Instance.Delay(3.6f, () =>
+            {
+                UIManager.Instance.ShowPopup<PopupLose>(null);
+            });
+            AudioManager.Instance.PlayOneShot(SFXStr.LOSE_VOICE, 1);
+            return;
+        }
+        animatorHandle.PlayAnimation("Hit", 0.1f, 0);
+        CancelPickUp();
+    }
+    public void ApplyEffect(BoosterType type)
+    {
+        switch (type)
+        {
+            case BoosterType.MAGNET:
+                interactArea.OnApplyBoosterMagnet();
+                break;
+            case BoosterType.SHIELD:
+                shieldObject.SetActive(true);
+                break;
+            case BoosterType.SPEED_UP:
+                cacheSpeed = moveSpeed;
+                cacheSpeed *= 2f;
+                break;
+
+        }
+    }
+    public void ResetBooster(BoosterType type)
+    {
+        switch (type)
+        {
+            case BoosterType.MAGNET:
+                interactArea.OnCancelBoosterMagnet();
+                break;
+            case BoosterType.SHIELD:
+                shieldObject.SetActive(false);
+                break;
+            case BoosterType.SPEED_UP:
+                cacheSpeed = moveSpeed;
+                break;
+        }
+    }
+    public void RebindAnimator()
+    {
+        StartCoroutine(WaitAFrame());
+        IEnumerator WaitAFrame()
+        {
+            yield return null;
+            animatorHandle.Rebind();
+        }
     }
 }

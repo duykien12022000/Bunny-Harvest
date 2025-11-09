@@ -74,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SketchTex:
-        m_Texture: {fileID: 2800000, guid: a0d03d906b6264d4c8c02b0ffd7bc8c2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -123,13 +123,13 @@ Material:
     - _Outline: 0
     - _Parallax: 0.02
     - _QueueOffset: 0
-    - _RampSmooth: 0.1
-    - _RampSmoothOtherLights: 1
-    - _RampThreshold: 0.5
+    - _RampSmooth: 1
+    - _RampSmoothOtherLights: 0.5
+    - _RampThreshold: 0
     - _RampThresholdOtherLights: 0.5
     - _ReceiveShadows: 1
-    - _RimMax: 0.9
-    - _RimMin: 0.6
+    - _RimMax: 2
+    - _RimMin: 0
     - _SketchSpeed: 1.1
     - _Smoothness: 0.3
     - _SmoothnessTextureChannel: 0
@@ -151,10 +151,10 @@ Material:
     - _EmissionColor: {r: 0.0009765624, g: 0.0009765624, b: 0.0009765624, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
-    - _OutlineColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _RimColor: {r: 0, g: 0, b: 0, a: 0.6}
-    - _SColor: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
-    - _SketchColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
+    - _OutlineColor: {r: 0.16981128, g: 0.09003446, b: 0, a: 0.8}
+    - _RimColor: {r: 0, g: 0, b: 0, a: 0.6392157}
+    - _SColor: {r: 0, g: 0, b: 0, a: 0.2}
+    - _SketchColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8944404505109132943

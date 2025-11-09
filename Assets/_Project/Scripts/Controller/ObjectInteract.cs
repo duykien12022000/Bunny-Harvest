@@ -8,6 +8,7 @@ public abstract class ObjectInteract : MonoBehaviour
     [SerializeField] protected GameObject model;
     public float Radius => radius;
     protected State currentState;
+    public State State => currentState;
     protected PlayerController player;
     protected bool isClaimed;
 

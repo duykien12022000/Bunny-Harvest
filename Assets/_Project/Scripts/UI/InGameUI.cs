@@ -7,14 +7,56 @@ using Sequence = DG.Tweening.Sequence;
 public class InGameUI : ScreenUI
 {
     [SerializeField] Joystick joystick;
-    [SerializeField] Button pickUpBtn, jumpBtn;
-    [SerializeField] TextMeshProUGUI scoreTxt, healthTxt;
+    [SerializeField] Button pickUpBtn, jumpBtn, settingBtn, tutorialBtn;
+    [SerializeField] TextMeshProUGUI scoreTxt, healthTxt, bonusHealthTxt;
+    [SerializeField] BoosterItemUI[] booster;
+    public BoosterItemUI GetBooster(BoosterType type)
+    {
+        for (int i = 0; i < booster.Length; i++)
+        {
+            if(booster[i].type == type)
+            {
+                return booster[i];
+            }
+        }
+        return null;
+    }
     public Joystick Joystick => joystick;
     public override void Initialize(UIManager uiManager)
     {
+        this.uiManager = uiManager;
         pickUpBtn.onClick.AddListener(OnPickUp);
         jumpBtn.onClick.AddListener(OnJump);
+        settingBtn.onClick.AddListener(() =>
+        {
+            uiManager.ShowPopup<PopupSettingMain>(null);
+        });
+        tutorialBtn.onClick.AddListener(() =>
+        {
+            uiManager.ShowPopup<PopupTutorial>(null);
+        });
         scoreTxt.text = "0x";
+        foreach(var item in booster)
+        {
+            item.SetActive(false);
+        }
+    }
+    public override void Active()
+    {
+        base.Active();
+        if (DataManager.Tutorial == 0)
+        {
+            uiManager.ShowPopup<PopupTutorial>(action);
+            DataManager.Tutorial++;
+            return;
+        }
+        action();
+        void action()
+        {
+            GameManager.Instance.SwitchGameState(GameState.PLAY);
+            CameraController.Instance.MoveTo(Vector3.zero, 0.35f, 0f, Ease.InQuad);
+            CameraController.Instance.RotateTo(Vector3.right * 35f, 0.35f, 0, Ease.InQuad);
+        }
     }
     private void OnPickUp()
     {

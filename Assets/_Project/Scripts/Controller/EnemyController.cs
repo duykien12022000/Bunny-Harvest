@@ -7,9 +7,14 @@ public abstract class EnemyController : MonoBehaviour
     [SerializeField] protected AnimatorHandle animatorHandle;
     [SerializeField] protected StatePatrol statePatrol;
     [SerializeField] protected float radiusDetected = 3;
+    [SerializeField] protected Collider bodyCollider;
+    [SerializeField] protected ParticleSystem deadVFX;
 
     [Range(0, 180)]
     [SerializeField] protected float viewAngle = 90f;
+
+    public AudioClip[] deadSFX;
+
 
     protected PlayerController target;
     protected Collider m_collider;
@@ -21,17 +26,18 @@ public abstract class EnemyController : MonoBehaviour
         isDead = false;
         m_collider = GetComponent<Collider>();
         m_collider.enabled = true;
+        bodyCollider.enabled = true;
     }
     private void Update()
     {
+        if (isDead) return;
         UpdateLogic();
     }
     public virtual void UpdateLogic()
     {
-        if(isDead) return;
         isDetected = PlayerDetected();
     }
-    public bool PlayerDetected()
+    private bool PlayerDetected()
     {
         if (target == null) return false;
         var p1 = transform.position;
@@ -72,7 +78,9 @@ public abstract class EnemyController : MonoBehaviour
     {
         isDead = true;
         m_collider.enabled = false;
+        bodyCollider.enabled = false;
         animatorHandle.PlayAnimation("Dead", 0.1f, 0);
+        AudioManager.Instance.PlayOneShot(deadSFX[Random.Range(0, deadSFX.Length)], 1);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -80,6 +88,11 @@ public abstract class EnemyController : MonoBehaviour
         {
             var fc = other.GetComponent<FootContact>();
             fc.OnTrigger();
+            OnTakeDamage();
+            deadVFX.Play();
+        }
+        else if (other.CompareTag("Shield"))
+        {
             OnTakeDamage();
         }
     }

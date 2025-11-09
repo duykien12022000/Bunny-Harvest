@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Worm : EnemyController
@@ -15,6 +12,9 @@ public class Worm : EnemyController
     {
         base.Initialize();
         animatorHandle.OnEventAnimation += SendEvent;
+        _direction = PlayerController.Instance.transform.position - transform.position;
+        float angle = Mathf.Atan2(_direction.normalized.x, _direction.normalized.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, angle, 0);
     }
 
     private void SendEvent(string eventName)
@@ -26,11 +26,11 @@ public class Worm : EnemyController
             p.transform.localPosition = firePos.position;
             p.Initialize(target);
         }
-        if(eventName == "EndFire")
+        if (eventName == "EndFire")
         {
             isFiring = false;
         }
-        if(eventName == "WarningVFX")
+        if (eventName == "WarningVFX")
         {
             warningVFX.Play();
         }
@@ -44,6 +44,11 @@ public class Worm : EnemyController
     public override void UpdateLogic()
     {
         base.UpdateLogic();
+        if (GameManager.currentState != GameState.PLAY)
+        {
+            animatorHandle.SetFloat("AttackAmount", 0);
+            return;
+        }
         if (isDetected)
         {
             if (!isFiring)

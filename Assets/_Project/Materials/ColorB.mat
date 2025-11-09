@@ -24,7 +24,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: cf803be647d5ad64ea11120766369bd9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - TCP2_NONE
   m_InvalidKeywords:
   - _GLOSSYREFLECTIONS_OFF
   - _SPECULARHIGHLIGHTS_OFF
@@ -134,21 +135,21 @@ Material:
     - _Outline: 1.5
     - _Parallax: 0.02
     - _QueueOffset: 0
-    - _RampSmooth: 0.1
+    - _RampSmooth: 1
     - _RampSmoothOtherLights: 1
-    - _RampThreshold: 0.5
+    - _RampThreshold: 0
     - _RampThresholdOtherLights: 0.5
     - _ReceiveShadows: 1
-    - _RimMax: 0.9
+    - _RimMax: 2
     - _RimMin: 0.6
-    - _SketchSpeed: 5
+    - _SketchSpeed: 1.1
     - _Smoothness: 0.3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TexLod: 5
+    - _TexLod: 9.7
     - _UVSec: 0
     - _WorkflowMode: 1
     - _ZSmooth: -0.5
@@ -160,9 +161,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.0009765624, g: 0.0009765624, b: 0.0009765624, a: 1}
     - _HColor: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
-    - _OutlineColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
-    - _RimColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0.6}
+    - _OutlineColor: {r: 0.16981131, g: 0.09003449, b: 0, a: 1}
+    - _RimColor: {r: 0.13207546, g: 0.13207546, b: 0.13207546, a: 0.62352943}
     - _SColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
-    - _SketchColor: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+    - _SketchColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

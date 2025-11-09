@@ -94,10 +94,10 @@ public class UIManager : Singleton<UIManager>//, IAdsUI
         listPopupCached = popupHolder.GetComponentsInChildren<PopupUI>(true).ToList();
         for (int i = 0; i < canvasScaler.Length; i++)
         {
-            canvasScaler[i].matchWidthOrHeight = 0;
+            canvasScaler[i].matchWidthOrHeight = 1;
             if (Utils.isiPad())
             {
-                canvasScaler[i].matchWidthOrHeight = 1f;
+                canvasScaler[i].matchWidthOrHeight = 0f;
             }
         }
         for (int i = 0; i < listPopupCached.Count; i++)

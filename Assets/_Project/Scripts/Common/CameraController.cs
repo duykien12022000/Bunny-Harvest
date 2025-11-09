@@ -19,7 +19,7 @@ public class CameraController : Singleton<CameraController>
     }
     public void MoveTo(Vector3 newPos, float duration, float delay, Ease ease, Action onComplete = null)
     {
-        mainCamera.transform.DOMove(newPos, duration).SetDelay(delay).SetEase(ease).OnComplete(() =>
+        mainCamera.transform.DOLocalMove(newPos, duration).SetDelay(delay).SetEase(ease).OnComplete(() =>
         {
             onComplete?.Invoke();
         });

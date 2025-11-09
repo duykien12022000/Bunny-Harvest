@@ -18,7 +18,10 @@ public class AnimatorHandle : MonoBehaviour
     public event System.Action<string> OnEventAnimation;
     private Dictionary<string, int> layers = new Dictionary<string, int>();
     public event System.Action<Vector3> OnAnimatorUpdate;
-
+    public void Rebind()
+    {
+        animator.Rebind();
+    }
     public virtual void ResetAnimator()
     {
         ResumeAnimator();

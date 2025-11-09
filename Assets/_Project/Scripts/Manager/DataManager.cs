@@ -1,21 +1,39 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
     Tween currentTween;
-    public static int BestScore
+    public CharacterSO CharacterContainer;
+    public static int CurrCharID
     {
-        set { PlayerPrefs.SetInt("BEST_SCORE", value); }
-        get { return PlayerPrefs.GetInt("BEST_SCORE", 0); }
+        set { PlayerPrefs.SetInt("curChar", value); }
+        get { return PlayerPrefs.GetInt("curChar", 0); }
+    }
+    public static int Radish
+    {
+        set { PlayerPrefs.SetInt("RADISH", value); }
+        get { return PlayerPrefs.GetInt("RADISH", 0); }
     }
     public static int MaxtHeart
     {
         set { PlayerPrefs.SetInt("MAX_HEART", value); }
         get { return PlayerPrefs.GetInt("MAX_HEART", 4); }
+    }
+    public static int Tutorial
+    {
+        set { PlayerPrefs.SetInt("Tutorial", value); }
+        get { return PlayerPrefs.GetInt("Tutorial", 0); }
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        var skinDefault = CharacterContainer.GetCharacter(0);
+        if (skinDefault.isBought == 0)
+        {
+            skinDefault.isBought = 999;
+        }
     }
     public void AnimateTo(int startValue, int targetValue, TextMeshProUGUI numberText)
     {
@@ -24,5 +42,11 @@ public class DataManager : Singleton<DataManager>
         {
             numberText.text = Mathf.RoundToInt(x).ToString();
         }, targetValue, 1f).SetEase(Ease.OutCubic);
+    }
+    public bool UsingRadish(int value)
+    {
+        if (value < 0 && Radish + value < 0) return false;
+        Radish += value;
+        return true;
     }
 }

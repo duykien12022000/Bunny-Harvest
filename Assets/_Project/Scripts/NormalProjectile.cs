@@ -18,6 +18,7 @@ public class NormalProjectile : Projectile
         lifeTimer = lifeTime;
         if (!isMovingDirection) return;
         if (target == null) return;
+        AudioManager.Instance.PlayOneShot(activeSFX, 1);
         _direction = target.transform.position - transform.position;
         float angle = Mathf.Atan2(_direction.normalized.x, _direction.normalized.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, angle, 0);
@@ -80,10 +81,15 @@ public class NormalProjectile : Projectile
         if (other.CompareTag("Player"))
         {
             target.OnTakeDamage();
+
+            AudioManager.Instance.PlayOneShot(impactSFX, 1);
+
             Deactive();
         }
-        else if(other.CompareTag("Environment"))
+        else if (other.CompareTag("Environment") || other.CompareTag("Shield"))
         {
+            AudioManager.Instance.PlayOneShot(impactSFX, 1);
+
             Deactive();
         }
         //IDamage id = other.GetComponent<IDamage>();

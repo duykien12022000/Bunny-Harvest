@@ -4943,6 +4943,8 @@ MonoBehaviour:
   speed: 10
   isActive: 0
   lifeTime: 1
+  activeSFX: {fileID: 8300000, guid: afb7f82135326b644aa60c82936f7ad2, type: 3}
+  impactSFX: {fileID: 8300000, guid: 0d563e2ab0a278b49b6378466bd49669, type: 3}
   isLookAtTarget: 0
   isMovingDirection: 1
 --- !u!135 &3885226816534740858

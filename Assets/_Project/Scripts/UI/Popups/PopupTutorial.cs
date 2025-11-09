@@ -7,7 +7,6 @@ public class PopupTutorial : PopupUI
 {
     [Serializable] public struct TutorialData
     {
-        public Sprite iconFunction;
         public string content;
         public Sprite image;
     }
@@ -56,7 +55,6 @@ public class PopupTutorial : PopupUI
     {
         textContent.text = data.content;
         imgTutorial.sprite = data.image;
-        imgFunc.sprite = data.iconFunction;
         if (currentIndex >= tutorials.Length - 1)
         {
             textBtn.text = "Got it!";

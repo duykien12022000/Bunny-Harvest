@@ -8,9 +8,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] UIManager uiManager;
     //[SerializeField] LevelManager levelManager;
     [SerializeField] GameController gameController;
-    public static bool NEW_LEVEL = false;
     public static GameState currentState { get; private set; }
     public static GameMode currentMode { get; private set; }
+    public static bool NEW_LEVEL = false;
     protected override void Awake()
     {
         base.Awake();
@@ -19,9 +19,16 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
-        //AudioManager.Instance.PlayMusic("BGM", 1, true);
-        //levelManager.Initialize();
+        AudioManager.Instance.PlayMusic("BGM", 1, true);
         uiManager.Initialize(this);
+        if (NEW_LEVEL)
+        {
+            uiManager.ActiveScreen<InGameUI>();
+        }
+        else
+        {
+            uiManager.ActiveScreen<HomeUI>();
+        }
         gameController.Initialize();
     }
     public void ReloadScene()
@@ -29,12 +36,15 @@ public class GameManager : Singleton<GameManager>
         NEW_LEVEL = true;
         SceneManager.LoadScene(0);
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        if (currentState == GameState.PLAY)
+        gameController.UpdatePhysic();
+#if UNITY_EDITOR
+        if (Input.GetKeyUp(KeyCode.V))
         {
-            //gameController.UpdateLogic();
+            DataManager.Radish += 100000;
         }
+#endif
     }
     public void SwitchGameState(GameState newState)
     {

@@ -5,15 +5,19 @@ using Random = UnityEngine.Random;
 
 public class GameController : Singleton<GameController>
 {
-    public static int CurrentScore = 0;
+    public static int CurretnRadish = 0;
     public int numberGenerate = 20;
     private int currentHeart;
     private AreaController areaCtrl;
     private List<Vegetable> vegetables = new List<Vegetable>();
     private List<Worm> worms = new List<Worm>();
     private InGameUI inGameUI;
+    private PlayerController playerCtrl;
     public void Initialize()
     {
+        playerCtrl = PlayerController.Instance;
+        playerCtrl.Initialize();
+
         areaCtrl = AreaController.Instance;
         areaCtrl.CreatRandomPositions(numberGenerate);
         var rp = areaCtrl.selected;
@@ -21,15 +25,19 @@ public class GameController : Singleton<GameController>
         {
             SpawnRandom(rp[i]);
         }
-        CurrentScore = 0;
+        CurretnRadish = 0;
         inGameUI = UIManager.Instance.GetScreen<InGameUI>();
 
         currentHeart = DataManager.MaxtHeart;
         UpdateHealth(currentHeart);
     }
+    public void UpdatePhysic()
+    {
+        playerCtrl.UpdatePhysic();
+    }
     public void DespawnVegetable(Vegetable vegetableRemove)
     {
-        areaCtrl.PushSe2Re(Vector3Int.CeilToInt(vegetableRemove.transform.position));
+        areaCtrl.PushSe2Re(Vector3Int.CeilToInt(vegetableRemove.InitPos));
         FactoryObject.Despawn("Vegetable", vegetableRemove.transform);
         vegetables.Remove(vegetableRemove);
         GameManager.Instance.Delay(3, () =>
@@ -80,12 +88,22 @@ public class GameController : Singleton<GameController>
     }
     public void UpdateScore(int score)
     {
-        CurrentScore += score;
-        inGameUI.UpdateCurrentScore(CurrentScore);
+        CurretnRadish += score;
+        inGameUI.UpdateCurrentScore(CurretnRadish);
     }
     public void UpdateHealth(int amount)
     {
         currentHeart += amount;
-        inGameUI.UpdateCurrentHealth(amount);
+        inGameUI.UpdateCurrentHealth(currentHeart);
+    }
+    public bool OnLose()
+    {
+        if(currentHeart < 1)
+    {
+            currentHeart = 0;
+            GameManager.Instance.SwitchGameState(GameState.LOSE);
+            return true;
+        }
+        return false;
     }
 }

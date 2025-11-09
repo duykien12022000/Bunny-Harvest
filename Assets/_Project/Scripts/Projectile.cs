@@ -8,6 +8,7 @@ public abstract class Projectile : MonoBehaviour
     public float speed = 20f;
     public bool isActive;
     public float lifeTime = 3f;
+    public AudioClip activeSFX, impactSFX;
     protected float lifeTimer;
     public virtual void Initialize(PlayerController target)
     {

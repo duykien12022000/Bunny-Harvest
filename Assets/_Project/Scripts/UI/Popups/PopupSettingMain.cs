@@ -51,7 +51,7 @@ public class PopupSettingMain : PopupUI
     public override void Show(Action onClose)
     {
         base.Show(onClose);
-        if(GameManager.currentState != GameState.NONE)
+        if (GameManager.currentState != GameState.NONE)
         {
             GameManager.Instance.SwitchGameState(GameState.PAUSE);
             homeBtn.gameObject.SetActive(true);
@@ -60,7 +60,7 @@ public class PopupSettingMain : PopupUI
         {
             homeBtn.gameObject.SetActive(false);
         }
-            OnInitSetting();
+        OnInitSetting();
     }
     private void OnClickVibration()
     {

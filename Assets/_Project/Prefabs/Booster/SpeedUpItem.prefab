@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3916477814859271636
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1573675801597195136, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1731416059, guid: 2d1707be113e99549b86ffe65a38b7f1, type: 3}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2380509620563170975, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601273676457090853, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      propertyPath: m_Name
+      value: SpeedUpItem
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7111815342399139416, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8601273676457090853, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4291644242010933801}
+  m_SourcePrefab: {fileID: 100100000, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+--- !u!1 &2721745772790524568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1414001152008857420, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+  m_PrefabInstance: {fileID: 3916477814859271636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4665795417102541127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8546182706699463827, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+  m_PrefabInstance: {fileID: 3916477814859271636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4685928359925256945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8601273676457090853, guid: fabdb94a2befd8e4d8900858b5bab6a6, type: 3}
+  m_PrefabInstance: {fileID: 3916477814859271636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4291644242010933801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4685928359925256945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67accc5af8eb8f24abb1fb08eda1397b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  display: {fileID: 4665795417102541127}
+  impact: {fileID: 2721745772790524568}
+  time: 5

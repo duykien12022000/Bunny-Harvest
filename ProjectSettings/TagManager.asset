@@ -7,6 +7,8 @@ TagManager:
   - Environment
   - Enemy
   - PlayerFoot
+  - Booster
+  - Shield
   layers:
   - Default
   - TransparentFX
