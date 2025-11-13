@@ -13,8 +13,11 @@ public abstract class EnemyController : MonoBehaviour
     [Range(0, 180)]
     [SerializeField] protected float viewAngle = 90f;
 
-    public AudioClip[] deadSFX;
 
+    private bool isFirstSpawn;
+
+    public AudioClip[] deadSFX;
+    
 
     protected PlayerController target;
     protected Collider m_collider;
@@ -22,6 +25,18 @@ public abstract class EnemyController : MonoBehaviour
     public bool isDetected { protected set; get; }
     public virtual void Initialize()
     {
+        if (!isFirstSpawn)
+        {
+            isFirstSpawn = true;
+            var cacheView = viewAngle;
+            viewAngle = 0;
+            StartCoroutine(Wait());
+            IEnumerator Wait()
+            {
+                yield return new WaitForSeconds(2f);
+                viewAngle = cacheView;
+            }
+        }
         target = PlayerController.Instance;
         isDead = false;
         m_collider = GetComponent<Collider>();

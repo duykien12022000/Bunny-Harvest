@@ -5,10 +5,13 @@ using Random = UnityEngine.Random;
 
 public class GameController : Singleton<GameController>
 {
+    public Transform mapRoot;
+
     public static int CurretnRadish = 0;
     public int numberGenerate = 20;
+
     private int currentHeart;
-    private AreaController areaCtrl;
+    public AreaController areaCtrl;
     private List<Vegetable> vegetables = new List<Vegetable>();
     private List<Worm> worms = new List<Worm>();
     private InGameUI inGameUI;
@@ -18,18 +21,21 @@ public class GameController : Singleton<GameController>
         playerCtrl = PlayerController.Instance;
         playerCtrl.Initialize();
 
-        areaCtrl = AreaController.Instance;
+        
+        CurretnRadish = 0;
+        inGameUI = UIManager.Instance.GetScreen<InGameUI>();
+
+        currentHeart = DataManager.MaxtHeart;
+        UpdateHealth(currentHeart);
+    }
+    public void SetUpMap()
+    {
         areaCtrl.CreatRandomPositions(numberGenerate);
         var rp = areaCtrl.selected;
         for (int i = 0; i < rp.Count; i++)
         {
             SpawnRandom(rp[i]);
         }
-        CurretnRadish = 0;
-        inGameUI = UIManager.Instance.GetScreen<InGameUI>();
-
-        currentHeart = DataManager.MaxtHeart;
-        UpdateHealth(currentHeart);
     }
     public void UpdatePhysic()
     {

@@ -6,10 +6,16 @@ public class DataManager : Singleton<DataManager>
 {
     Tween currentTween;
     public CharacterSO CharacterContainer;
+    public MapSO MapContainer;
     public static int CurrCharID
     {
         set { PlayerPrefs.SetInt("curChar", value); }
         get { return PlayerPrefs.GetInt("curChar", 0); }
+    }
+    public static int CurrMapID
+    {
+        set { PlayerPrefs.SetInt("curMap", value); }
+        get { return PlayerPrefs.GetInt("curMap", 0); }
     }
     public static int Radish
     {
@@ -33,6 +39,11 @@ public class DataManager : Singleton<DataManager>
         if (skinDefault.isBought == 0)
         {
             skinDefault.isBought = 999;
+        }
+        var mapDefault = MapContainer.GetMap(0);
+        if (mapDefault.isBought == 0)
+        {
+            mapDefault.isBought = 999;
         }
     }
     public void AnimateTo(int startValue, int targetValue, TextMeshProUGUI numberText)

@@ -17,20 +17,20 @@ MonoBehaviour:
     radish: 0
     prefabs: {fileID: 6440647275295226116, guid: 4866a3e687995254c9ac7958b3c1fdb0, type: 3}
   - id: 1
-    radish: 1000
+    radish: 200
     prefabs: {fileID: 5211698403212126693, guid: fc618e39cef2865409834ab91129bb47, type: 3}
   - id: 2
-    radish: 2000
+    radish: 400
     prefabs: {fileID: 8597486461543315880, guid: 626edd043e913e641b22072d32a2a9ab, type: 3}
   - id: 3
-    radish: 3000
+    radish: 600
     prefabs: {fileID: 368084477565419394, guid: 76f745a61b0f26c489efcae57d51026d, type: 3}
   - id: 4
-    radish: 4000
+    radish: 800
     prefabs: {fileID: 8299453954964380003, guid: 7c0719c6a567ef74eaac2213175bb445, type: 3}
   - id: 5
-    radish: 5000
+    radish: 1000
     prefabs: {fileID: 282160072410646074, guid: d3c5b300f3373134a9bce276d9f87fa4, type: 3}
   - id: 6
-    radish: 6000
+    radish: 1200
     prefabs: {fileID: 1977786370190195525, guid: 454290f5838e3024ab7165065c5b539b, type: 3}

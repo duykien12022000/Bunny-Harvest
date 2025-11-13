@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
-public class AreaController : Singleton<AreaController>
+public class AreaController : MonoBehaviour
 {
     [SerializeField] Area[] areas;
     [SerializeField] List<Vector3Int> allPosSpawn = new List<Vector3Int>();
