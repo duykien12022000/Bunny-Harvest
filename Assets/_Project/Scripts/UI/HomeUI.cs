@@ -44,10 +44,17 @@ public class HomeUI : ScreenUI
         tabMap.gameObject.SetActive(false);
         tabMainDefaultPos = tabMain.anchoredPosition;
         CreatCharacter(DataManager.CurrCharID);
-        CreatMap(DataManager.CurrMapID, () =>
+        if (GameManager.NEW_LEVEL)
         {
-            indexMap = curMapData.id;
-        });
+            SetUpMapReplay();
+        }
+        else
+        {
+            CreatMap(DataManager.CurrMapID, () =>
+            {
+                indexMap = curMapData.id;
+            });
+        }
         index = curCharData.id;
         UpdateRadish();
     }
@@ -227,5 +234,11 @@ public class HomeUI : ScreenUI
             GameController.Instance.areaCtrl = curMap.AreaController;
         }
 
+    }
+    private void SetUpMapReplay()
+    {
+        curMap = Instantiate(mapSO.GetMap(DataManager.CurrMapID).prefabs);
+        curMap.transform.SetParent(GameController.Instance.mapRoot);
+        GameController.Instance.areaCtrl = curMap.AreaController;
     }
 }

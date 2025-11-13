@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
         {
             uiManager.ActiveScreen<HomeUI>();
         }
+
         gameController.Initialize();
     }
     public void ReloadScene()
