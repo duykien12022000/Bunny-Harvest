@@ -240,5 +240,6 @@ public class HomeUI : ScreenUI
         curMap = Instantiate(mapSO.GetMap(DataManager.CurrMapID).prefabs);
         curMap.transform.SetParent(GameController.Instance.mapRoot);
         GameController.Instance.areaCtrl = curMap.AreaController;
+        GameController.Instance.SetUpMap();
     }
 }
